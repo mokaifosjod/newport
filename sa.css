@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Body */
+body {
+  background: #000000;
+  color: rgb(255, 255, 255);
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.559);
+}
+
+/* NAVIGATION */
+header nav {
+ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  font-size: 27px;
+}
+
+/* header nav h1 {
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+} */
+
+header nav .a {
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.4s;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+header nav a:hover {
+  color: rgb(47, 188, 188);
+}
+
+/* SEARCH SECTION */
+#m {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  padding: 20px;
+  /* background: rgba(111, 75, 75, 0.5); */
+  border-radius: 10px;
+  padding-top: 60px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.k {
+  border-radius: 20px;
+  width: 500px;
+  height: 40px;
+  font-size: 16px;
+  padding: 5px 15px;
+  border: 1px solid rgb(237, 237, 237);
+  background: rgba(0, 0, 0, 0.6);
+  color: rgb(255, 255, 255);
+  outline: none;
+}
+
+.k::placeholder {
+  color: rgb(243, 255, 255);
+  opacity: 0.5;
+}
+
+#but {
+  margin-top: 15px;
+  width: 200px;
+  padding: 10px;
+  
+  height: 40px;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: #ffffff;
+  color: #000;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#but:hover {
+  background-color:#0ff;
+  color: #000;
+}
+
+/* GALLERY SECTION */
+#photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  width: 100%;
+}
+
+/* VIDEO BACKGROUND */
+#backvid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
+  opacity: 0.8;
+}

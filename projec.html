@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reaction Time Game</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    #shape {
+      width: 100px;
+      height: 100px;
+      background-color: #ff4081;
+      position: relative;
+      margin: 20px auto;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    #result {
+      font-size: 24px;
+      margin-top: 20px;
+      min-height: 30px;
+    }
+
+    button {
+      background-color: #00f2fe;
+      color: #333;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #4facfe;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Reaction Time Game</h1>
+    <p>Click the shape as quickly as you can when it appears!</p>
+    <div id="shape"></div>
+    <div id="result"></div>
+    <button id="startBtn">Start Game</button>
+  </div>
+
+  <script>
+    const shape = document.getElementById('shape');
+    const result = document.getElementById('result');
+    const startBtn = document.getElementById('startBtn');
+
+    let startTime;
+
+    function randomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function makeShapeAppear() {
+      const top = Math.random() * 200 + 50;
+      const left = Math.random() * 200 + 50;
+      const size = Math.random() * 100 + 50;
+
+      shape.style.backgroundColor = randomColor();
+      shape.style.width = `${size}px`;
+      shape.style.height = `${size}px`;
+      shape.style.top = `${top}px`;
+      shape.style.left = `${left}px`;
+      shape.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
+      shape.style.opacity = 1;
+
+      startTime = Date.now();
+    }
+
+    function appearAfterDelay() {
+      shape.style.opacity = 0;
+      result.textContent = "";
+      const delay = Math.random() * 2000 + 1000;
+      setTimeout(makeShapeAppear, delay);
+    }
+
+    shape.onclick = function () {
+      const endTime = Date.now();
+      const reactionTime = (endTime - startTime) / 1000;
+      shape.style.opacity = 0;
+      result.textContent = `Your time: ${reactionTime.toFixed(3)} seconds!`;
+      startBtn.style.display = "inline-block";
+    };
+
+    startBtn.onclick = function () {
+      startBtn.style.display = "none";
+      appearAfterDelay();
+    };
+  </script>
+</body>
+</html>

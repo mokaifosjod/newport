@@ -5,31 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <style>
-    #k {
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px; /* optional spacing between images */
-      flex-wrap: wrap; /* allow wrapping on small screens */
-      padding: 20px;
-    }
+    #gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    #k img {
-      width: 50%;
-      height: auto;
-      max-width: 300px; /* optional max size */
-    }
+#gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+#gallery img:hover {
+  transform: scale(1.05);
+}
   </style>
 </head>
 <body>
 
-  <div id="k">
-    <img id="py" src="lii.png" alt="">
-    <img src="l.png" alt="">
-    <img src="image.png" alt="">
-    <img src="l.png" alt="">
-    <img src="k.png" alt="">
+ 
+    
+    <div id="gallery"></div>
+
+
+<script>
+  
+  let gallery = document.getElementById("gallery");
+
+  for (let i = 1; i <= 33; i++) {
+    let img = document.createElement("img");
+    img.src = `gl${i}.jpg`;
+    img.alt = `gl${i}`;
+    img.style.width = "150px";
+    img.style.margin = "5px";
+    gallery.appendChild(img);
+  }
+</script>
+
+     
   </div>
 
 </body>
